@@ -1,0 +1,27 @@
+# Build Artifacts
+build/
+!build/.gitkeep
+bin/
+obj/
+*.exe
+*.out
+*.o
+*.obj
+*.so
+*.dll
+
+# Executables
+lil_chat_server
+lil_chat_client
+server
+client
+
+# IDEs
+.vscode/
+.idea/
+.vs/
+
+# System
+Thumbs.db
+.DS_Store
+*.log

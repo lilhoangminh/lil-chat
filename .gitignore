@@ -1,6 +1,5 @@
 # Build Artifacts
 build/
-!build/.gitkeep
 bin/
 obj/
 *.exe
@@ -10,16 +9,16 @@ obj/
 *.so
 *.dll
 
-# Executables
-lil_chat_server
-lil_chat_client
-server
-client
+# Crash dumps
+core
+core.*
+vgcore.*
 
 # IDEs
 .vscode/
 .idea/
 .vs/
+*.swp
 
 # System
 Thumbs.db

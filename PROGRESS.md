@@ -20,7 +20,14 @@ Mỗi milestone có tiêu chí "xong" là hành vi quan sát được, không ph
 
 - Milestone đang làm: M0
 - Đã xong: Makefile, AGENTS.md, README.md, khung `docs/PROTOCOL.md`
-- Việc tiếp theo: điền `docs/PROTOCOL.md` (tự quyết định từng mục), rồi viết `include/protocol.h`
+- Việc tiếp theo: xử lý trạng thái build của bộ khung trước; sau đó tiếp tục quyết định protocol trong `docs/PROTOCOL.md` rồi mới thiết kế `include/protocol.h`.
+
+## Kiểm tra trạng thái thực tế (2026-11-15)
+
+- Đã chạy `make` trên snapshot hiện tại trong môi trường Linux/GCC.
+- Kết quả: build thất bại ở bước link server với `undefined reference to main`; các translation unit rỗng cũng phát cảnh báo `-Wpedantic`.
+- Nguyên nhân trực tiếp: Makefile đưa các file `.c` hiện có vào build dù chúng đang rỗng; chưa có định nghĩa `main()` trong `src/server/main.c` (và client cũng chưa có implementation).
+- Chưa sửa Makefile hoặc source code. Cần chọn cách xử lý bootstrap và xác nhận tiêu chí M0 trước khi đánh dấu M0 hoàn thành.
 
 ## Quyết định thiết kế
 

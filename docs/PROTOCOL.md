@@ -16,8 +16,8 @@ TCP là luồng byte, không có ranh giới message.
 - Cách đánh dấu hết một message: Tiền tố gồm 4 bytes (kiểu uint32_t, Network Byte Order) quy định độ dài (payload length) của gói tin tiếp theo.
 - Lý do chọn: Tránh hoàn toàn lỗi dính gói (sticky packets) hoặc đứt quãng gói (fragmentation) của TCP, không bị giới hạn bởi ký tự xuống dòng trong nội dung chat.
 - Điều gì xảy ra nếu nội dung chứa chính ký hiệu đánh dấu đó: Không ảnh hưởng, vì hệ thống đọc đúng số byte được định nghĩa bởi độ dài ở 4 byte đầu tiên thay vì tìm kiếm ký tự kết thúc.
-- Kích thước message tối đa: Ví dụ: 1024 hoặc 4096 bytes (đủ cho một đoạn tin nhắn chat trên terminal).
-- Server làm gì khi message vượt quá tối đa: Ngắt kết nối client đó (disconnect) hoặc gửi về gói tin lỗi và bỏ qua payload thừa để tránh tràn bộ nhớ đệm (buffer overflow).
+- Kích thước message tối đa: `MAX_PAYLOAD` = 4096 byte, chỉ tính payload (không tính 5 byte header). Lý do: đủ rộng cho tin nhắn terminal bằng UTF-8 (tiếng Việt tới 3 byte/ký tự) kể cả khi server thêm tiền tố tên người gửi khi broadcast; buffer đọc mỗi client cố định (~4101 byte) nên tổng bộ nhớ nhỏ; giới hạn giúp server từ chối `length` vô lý ngay sau khi đọc header, trước khi đọc payload.
+- Server làm gì khi message vượt quá tối đa (`length > MAX_PAYLOAD`): coi là lỗi giao thức, xử lý theo quy tắc ở §6 (gửi `MSG_ERROR` rồi đóng kết nối). Không đọc payload và không cố bỏ qua, vì khi `length` đã sai thì không thể biết ranh giới gói kế tiếp.
 - Cách xử lý một message đến thành nhiều đợt `recv`, và nhiều message đến trong một đợt `recv`: Sử dụng vòng lặp bộ đệm (read buffer/ring buffer) để tích lũy dữ liệu byte cho đến khi nhận đủ 5 byte header (length 4 byte + type 1 byte), sau đó tiếp tục đọc đủ phần payload theo đúng chiều dài `length` đã khai báo.
 
 ## 3. Cấu trúc message
@@ -53,7 +53,7 @@ TCP là luồng byte, không có ranh giới message.
 ## 6. Lỗi
 
 - Server báo lỗi cho client thế nào: Gửi một gói tin loại MSG_ERROR kèm theo chuỗi mô tả lỗi.
-- Message sai định dạng: Server ngắt kết nối client đó ngay lập tức để bảo vệ tính toàn vẹn của tiến trình server khỏi các dữ liệu rác hoặc tấn công tràn bộ nhớ.
+- Lỗi giao thức (`length > MAX_PAYLOAD`, `type` không hợp lệ, hoặc client gửi loại message chỉ server được gửi): server cố gửi một gói `MSG_ERROR` mô tả lý do, rồi đóng kết nối client đó. Nếu `send` thất bại thì bỏ qua và vẫn đóng. Lý do: không thể bỏ qua một gói an toàn khi luồng byte đã hỏng; một đường xử lý duy nhất cho mọi lỗi giao thức, không để lại luồng byte sai trạng thái; client nhận được lý do để dễ debug. Lỗi mức ứng dụng (ví dụ tên đã tồn tại) chưa quyết định có đóng kết nối hay không.
 
 ## 7. Ví dụ
 

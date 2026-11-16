@@ -34,6 +34,9 @@ docs/         documentation (PROTOCOL.md)
 ## Documentation
 
 - [docs/PROTOCOL.md](docs/PROTOCOL.md): message format and framing
+- [docs/LEARNING_PLAN.md](docs/LEARNING_PLAN.md): roadmap for project ( must follow )
+- [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md): overview of the project
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): describe how project works
 - [PROGRESS.md](PROGRESS.md): development progress and design decisions
 - [AGENTS.md](AGENTS.md): guidelines for working with AI assistants
 

@@ -35,6 +35,7 @@ Mỗi milestone có tiêu chí "xong" là hành vi quan sát được, không ph
 
 - 2026-11-16: Xử lý bootstrap M0 bằng cách liệt kê tường minh nguồn trong Makefile (`SERVER_SRCS = src/server/main.c`, `CLIENT_SRCS = src/client/main.c`, `COMMON_SRCS` rỗng) và viết `main()` tối thiểu cho hai `main.c`. Lý do: file `.c` rỗng gây cảnh báo `-Wpedantic` (empty translation unit) nên không dùng `wildcard`; không nhét code giả vào các file rỗng; giữ nguyên cấu trúc file/thư mục. Mỗi khi một module có code, thêm file đó vào danh sách trong Makefile.
 - 2026-11-16: Trường `length` trong khung gói tin chỉ tính **payload** (không gồm `type`). Header cố định 5 byte (`length` 4 byte, `type` 1 byte); payload rỗng là `length = 0`. Lý do: khớp §2 của `docs/PROTOCOL.md`, header cố định dễ cài đặt bằng "đọc đủ N byte, parse, lặp lại".
+- 2026-11-16: Server xử lý nhiều client (M3) bằng một thread với `poll()`, không dùng thread/`pthread`. Lý do: không cần đồng bộ hóa (mutex), thấy rõ bản chất dữ liệu TCP đến từng mảnh (ăn khớp với framing ở M2), hợp với mảng client cố định `MAX_CLIENTS` ở §5 PROTOCOL. Hệ quả: mỗi client cần buffer đọc riêng và trạng thái "đã nhận bao nhiêu byte của gói hiện tại". Không chọn `select()` vì giới hạn `FD_SETSIZE` và API kém hơn.
 
 ## Vấn đề đang mở
 

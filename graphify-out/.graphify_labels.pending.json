@@ -1,0 +1,22 @@
+{
+  "0": "LIL_CHAT Repository Instructions",
+  "1": "LIL_CHAT — Architecture Notes",
+  "2": "LIL_CHAT — Project Overview",
+  "3": "LIL_CHAT - Protocol",
+  "4": "LIL_CHAT",
+  "5": "PROGRESS",
+  "6": "README.md",
+  "7": "client.h",
+  "8": "protocol.h",
+  "9": "server.h",
+  "10": "util.h",
+  "11": "client_net.c",
+  "12": "client/main.c",
+  "13": "protocol.c",
+  "14": "util.c",
+  "15": "broadcast.c",
+  "16": "client_list.c",
+  "17": "command_handler.c",
+  "18": "connection.c",
+  "19": "server/main.c"
+}

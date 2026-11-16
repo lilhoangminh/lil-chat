@@ -1,0 +1,116 @@
+{
+  "include/client.h": {
+    "mtime": 1791982247.5780883,
+    "seen": 1794824755.5649977,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "include/protocol.h": {
+    "mtime": 1791982247.5667458,
+    "seen": 1794824755.565004,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "include/server.h": {
+    "mtime": 1791982247.57708,
+    "seen": 1794824755.5650065,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "include/util.h": {
+    "mtime": 1791982247.575033,
+    "seen": 1794824755.565008,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/client/client_net.c": {
+    "mtime": 1791982250.658216,
+    "seen": 1794824755.565009,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/client/main.c": {
+    "mtime": 1791982250.653535,
+    "seen": 1794824755.56501,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/common/protocol.c": {
+    "mtime": 1791982247.6105673,
+    "seen": 1794824755.5650113,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/common/util.c": {
+    "mtime": 1791982247.617528,
+    "seen": 1794824755.5650122,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/server/broadcast.c": {
+    "mtime": 1791982247.6470606,
+    "seen": 1794824755.5650132,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/server/client_list.c": {
+    "mtime": 1791982247.6460552,
+    "seen": 1794824755.5650141,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/server/command_handler.c": {
+    "mtime": 1791982247.6490605,
+    "seen": 1794824755.565015,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/server/connection.c": {
+    "mtime": 1791982247.644973,
+    "seen": 1794824755.5650163,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "src/server/main.c": {
+    "mtime": 1791982247.6399727,
+    "seen": 1794824755.5650175,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1794759019.0,
+    "seen": 1794824755.5650184,
+    "ast_hash": "88d9851b03b5588939f44d60789e4a3d",
+    "semantic_hash": ""
+  },
+  "PROGRESS.md": {
+    "mtime": 1794759020.0,
+    "seen": 1794824755.5650191,
+    "ast_hash": "c0bea11d63622082d929fabe7281d4be",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1794822877.4262905,
+    "seen": 1794824755.56502,
+    "ast_hash": "f4356d77719dd4ae2e48354a4e146c53",
+    "semantic_hash": ""
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1794759019.0,
+    "seen": 1794824755.5650213,
+    "ast_hash": "acc0d9c7944d22cf86b6f0c62a358c4d",
+    "semantic_hash": ""
+  },
+  "docs/PROJECT_OVERVIEW.md": {
+    "mtime": 1794759019.0,
+    "seen": 1794824755.565022,
+    "ast_hash": "692755ccb8b4c8ae70c14578042be64e",
+    "semantic_hash": ""
+  },
+  "docs/PROTOCOL.md": {
+    "mtime": 1794822545.032793,
+    "seen": 1794824755.565023,
+    "ast_hash": "7bc20b697b80fc9352be4dca00dfcf83",
+    "semantic_hash": ""
+  }
+}

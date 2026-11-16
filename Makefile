@@ -27,10 +27,12 @@ OBJ_DIR   = $(BUILD_DIR)/obj
 SERVER_EXEC = $(BUILD_DIR)/lil_chat_server
 CLIENT_EXEC = $(BUILD_DIR)/lil_chat_client
 
-# Lấy tất cả .c hiện có, nên không lỗi vì file chưa tồn tại.
-COMMON_SRCS = $(wildcard src/common/*.c)
-SERVER_SRCS = $(wildcard src/server/*.c)
-CLIENT_SRCS = $(wildcard src/client/*.c)
+# Liệt kê tường minh các .c đã có nội dung. Không dùng wildcard vì file .c rỗng
+# sẽ gây cảnh báo -Wpedantic (empty translation unit) và làm link lỗi.
+# Mỗi khi một module có code, thêm đường dẫn của nó vào danh sách tương ứng.
+COMMON_SRCS =
+SERVER_SRCS = src/server/main.c
+CLIENT_SRCS = src/client/main.c
 
 COMMON_OBJS = $(COMMON_SRCS:%.c=$(OBJ_DIR)/%.o)
 SERVER_OBJS = $(SERVER_SRCS:%.c=$(OBJ_DIR)/%.o)

@@ -39,4 +39,4 @@ docs/         documentation (PROTOCOL.md)
 
 ## Status
 
-M0: Project scaffolding. See [PROGRESS.md](PROGRESS.md).
+M1: A single client communicating with a server over TCP (echo). See [PROGRESS.md](PROGRESS.md).

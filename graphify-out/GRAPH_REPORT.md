@@ -1,17 +1,17 @@
 # Graph Report - LIL_CHAT  (2026-11-16)
 
 ## Corpus Check
-- 19 files · ~3,199 words
+- 19 files · ~3,556 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 2)
 
 ## Summary
-- 64 nodes · 48 edges · 20 communities (6 shown, 14 thin omitted)
+- 67 nodes · 52 edges · 19 communities (6 shown, 13 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f8ea5191`
+- Built from commit: `b7a5cc27`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,7 +41,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (20 total, 14 thin omitted)
+## Communities (19 total, 13 thin omitted)
 
 ### Community 0 - "LIL_CHAT Repository Instructions"
 Cohesion: 0.20
@@ -68,14 +68,14 @@ Cohesion: 0.33
 Nodes (6): Hiện tại, Kiểm tra trạng thái thực tế (2026-11-15), Milestone (bản nháp, sửa theo ý bạn), PROGRESS, Quyết định thiết kế, Vấn đề đang mở
 
 ## Knowledge Gaps
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `LIL_CHAT Repository Instructions` connect `LIL_CHAT Repository Instructions` to `README.md`?**
-  _High betweenness centrality (0.134) - this node is a cross-community bridge._
+  _High betweenness centrality (0.122) - this node is a cross-community bridge._
 - **Why does `LIL_CHAT - Protocol` connect `LIL_CHAT - Protocol` to `README.md`?**
-  _High betweenness centrality (0.108) - this node is a cross-community bridge._
+  _High betweenness centrality (0.098) - this node is a cross-community bridge._
 - **Why does `LIL_CHAT` connect `LIL_CHAT` to `README.md`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+  _High betweenness centrality (0.085) - this node is a cross-community bridge._

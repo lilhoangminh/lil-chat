@@ -17,6 +17,5 @@
   "15": "broadcast.c",
   "16": "client_list.c",
   "17": "command_handler.c",
-  "18": "connection.c",
-  "19": "server/main.c"
+  "18": "connection.c"
 }

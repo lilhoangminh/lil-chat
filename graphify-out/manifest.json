@@ -30,9 +30,9 @@
     "semantic_hash": ""
   },
   "src/client/main.c": {
-    "mtime": 1791982250.653535,
-    "seen": 1794824755.56501,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1794826520.9859588,
+    "seen": 1794826526.0388014,
+    "ast_hash": "d6b6402ee8e4114d6bf0dea783fc836e",
     "semantic_hash": ""
   },
   "src/common/protocol.c": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "src/server/main.c": {
-    "mtime": 1791982247.6399727,
-    "seen": 1794824755.5650175,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1794826520.9869535,
+    "seen": 1794826526.03882,
+    "ast_hash": "197ea5067f6df4f6fcda4af6d0090d3e",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "PROGRESS.md": {
-    "mtime": 1794759020.0,
-    "seen": 1794824755.5650191,
-    "ast_hash": "c0bea11d63622082d929fabe7281d4be",
+    "mtime": 1794826520.9849572,
+    "seen": 1794826526.0388253,
+    "ast_hash": "24cf5b4b1927c7285c7b5e57ddb5e859",
     "semantic_hash": ""
   },
   "README.md": {
@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "docs/PROTOCOL.md": {
-    "mtime": 1794822545.032793,
-    "seen": 1794824755.565023,
-    "ast_hash": "7bc20b697b80fc9352be4dca00dfcf83",
+    "mtime": 1794826520.9859588,
+    "seen": 1794826526.0388353,
+    "ast_hash": "3b75922dab9d85665d7aaa2ca64d2a46",
     "semantic_hash": ""
   }
 }

@@ -36,9 +36,10 @@ Mỗi milestone có tiêu chí "xong" là hành vi quan sát được, không ph
 - 2026-11-16: Xử lý bootstrap M0 bằng cách liệt kê tường minh nguồn trong Makefile (`SERVER_SRCS = src/server/main.c`, `CLIENT_SRCS = src/client/main.c`, `COMMON_SRCS` rỗng) và viết `main()` tối thiểu cho hai `main.c`. Lý do: file `.c` rỗng gây cảnh báo `-Wpedantic` (empty translation unit) nên không dùng `wildcard`; không nhét code giả vào các file rỗng; giữ nguyên cấu trúc file/thư mục. Mỗi khi một module có code, thêm file đó vào danh sách trong Makefile.
 - 2026-11-16: Trường `length` trong khung gói tin chỉ tính **payload** (không gồm `type`). Header cố định 5 byte (`length` 4 byte, `type` 1 byte); payload rỗng là `length = 0`. Lý do: khớp §2 của `docs/PROTOCOL.md`, header cố định dễ cài đặt bằng "đọc đủ N byte, parse, lặp lại".
 - 2026-11-16: Server xử lý nhiều client (M3) bằng một thread với `poll()`, không dùng thread/`pthread`. Lý do: không cần đồng bộ hóa (mutex), thấy rõ bản chất dữ liệu TCP đến từng mảnh (ăn khớp với framing ở M2), hợp với mảng client cố định `MAX_CLIENTS` ở §5 PROTOCOL. Hệ quả: mỗi client cần buffer đọc riêng và trạng thái "đã nhận bao nhiêu byte của gói hiện tại". Không chọn `select()` vì giới hạn `FD_SETSIZE` và API kém hơn.
+- 2026-11-16: `MAX_PAYLOAD` = 4096 byte (chỉ tính payload, không tính 5 byte header); server kiểm tra `length` ngay sau khi đọc header, trước khi đọc payload. Lý do: đủ cho UTF-8 tiếng Việt cộng tiền tố tên khi broadcast; buffer cố định mỗi client (~4101 byte) nên bộ nhớ nhỏ; chặn `length` vô lý (tới 4 tỷ). Đã ghi vào §2 `docs/PROTOCOL.md`.
 
 ## Vấn đề đang mở
 
 - `make clean` chạy `rm -rf build` nên xóa cả `build/.gitkeep` (suy ra từ Makefile, chưa quan sát trên repo thật); `make debug` gọi `make clean`.
 - `tests/` đang rỗng và Makefile chưa có target test; chốt cách test khi tới M2.
-- `docs/PROTOCOL.md` còn các mục chưa chốt: kích thước message tối đa, xử lý message quá lớn, xử lý message sai định dạng (hiện là ví dụ/lựa chọn "hoặc").
+- `docs/PROTOCOL.md` còn các mục chưa chốt: xử lý message quá lớn (`length > MAX_PAYLOAD`), xử lý message sai định dạng (hiện là lựa chọn "hoặc").

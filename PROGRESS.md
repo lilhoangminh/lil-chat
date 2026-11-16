@@ -18,21 +18,26 @@ Mỗi milestone có tiêu chí "xong" là hành vi quan sát được, không ph
 
 ## Hiện tại
 
-- Milestone đang làm: M0
-- Đã xong: Makefile, AGENTS.md, README.md, khung `docs/PROTOCOL.md`
-- Việc tiếp theo: xử lý trạng thái build của bộ khung trước; sau đó tiếp tục quyết định protocol trong `docs/PROTOCOL.md` rồi mới thiết kế `include/protocol.h`.
+- Milestone đang làm: M1
+- Đã xong: M0 (2026-11-16). `make` và `make debug` build sạch, không warning, trên WSL2 (Ubuntu 22.04, gcc 11.4); hai binary chạy và thoát với mã 0. Trước đó: AGENTS.md, README.md, khung `docs/PROTOCOL.md`.
+- Việc tiếp theo: giảng lý thuyết M1 (socket TCP, `socket`/`bind`/`listen`/`accept`/`connect`, echo 1 client) rồi cùng chốt cách làm. Các mục trong `docs/PROTOCOL.md` còn là ví dụ/lựa chọn mở (kích thước tối đa, xử lý message quá lớn/sai định dạng) cần chốt trước M2.
 
 ## Kiểm tra trạng thái thực tế (2026-11-15)
 
 - Đã chạy `make` trên snapshot hiện tại trong môi trường Linux/GCC.
 - Kết quả: build thất bại ở bước link server với `undefined reference to main`; các translation unit rỗng cũng phát cảnh báo `-Wpedantic`.
 - Nguyên nhân trực tiếp: Makefile đưa các file `.c` hiện có vào build dù chúng đang rỗng; chưa có định nghĩa `main()` trong `src/server/main.c` (và client cũng chưa có implementation).
-- Chưa sửa Makefile hoặc source code. Cần chọn cách xử lý bootstrap và xác nhận tiêu chí M0 trước khi đánh dấu M0 hoàn thành.
+- Đã xử lý ngày 2026-11-16: xem "Quyết định thiết kế" bên dưới.
 
 ## Quyết định thiết kế
 
-(Ghi theo dạng: ngày, quyết định, lý do. Chưa có.)
+(Ghi theo dạng: ngày, quyết định, lý do.)
+
+- 2026-11-16: Xử lý bootstrap M0 bằng cách liệt kê tường minh nguồn trong Makefile (`SERVER_SRCS = src/server/main.c`, `CLIENT_SRCS = src/client/main.c`, `COMMON_SRCS` rỗng) và viết `main()` tối thiểu cho hai `main.c`. Lý do: file `.c` rỗng gây cảnh báo `-Wpedantic` (empty translation unit) nên không dùng `wildcard`; không nhét code giả vào các file rỗng; giữ nguyên cấu trúc file/thư mục. Mỗi khi một module có code, thêm file đó vào danh sách trong Makefile.
+- 2026-11-16: Trường `length` trong khung gói tin chỉ tính **payload** (không gồm `type`). Header cố định 5 byte (`length` 4 byte, `type` 1 byte); payload rỗng là `length = 0`. Lý do: khớp §2 của `docs/PROTOCOL.md`, header cố định dễ cài đặt bằng "đọc đủ N byte, parse, lặp lại".
 
 ## Vấn đề đang mở
 
-(Chưa có.)
+- `make clean` chạy `rm -rf build` nên xóa cả `build/.gitkeep` (suy ra từ Makefile, chưa quan sát trên repo thật); `make debug` gọi `make clean`.
+- `tests/` đang rỗng và Makefile chưa có target test; chốt cách test khi tới M2.
+- `docs/PROTOCOL.md` còn các mục chưa chốt: kích thước message tối đa, xử lý message quá lớn, xử lý message sai định dạng (hiện là ví dụ/lựa chọn "hoặc").

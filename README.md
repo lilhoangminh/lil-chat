@@ -1,42 +1,42 @@
 # LIL_CHAT
 
-Ứng dụng chat chạy trên terminal, viết bằng C, mô hình client-server (TCP). Đây là dự án C đầu tiên của tôi, mục tiêu chính là học lập trình hệ thống.
+A terminal-based chat application written in C, utilizing a TCP client-server architecture. This is my first C project, with system programming as the primary learning objective.
 
-## Môi trường
+## Environment
 
-- Linux hoặc WSL2
+- Linux or WSL2
 - gcc, make
 
 ## Build
 
 ```sh
-make          # build thường
-make debug    # build lại với AddressSanitizer + UBSan
-make clean    # xóa thư mục build
+make          # normal build
+make debug    # rebuild with AddressSanitizer + UBSan
+make clean    # delete build folder
 ```
 
-File chạy nằm trong `build/`: `lil_chat_server` và `lil_chat_client`.
+The compiled executables are located in `build/`: `lil_chat_server` and `lil_chat_client`.
 
-## Chạy
+## Run
 
-Chưa có. Sẽ cập nhật khi server và client chạy được.
+Not yet available. Will be updated once the server and client are up and running.
 
-## Cấu trúc
+## Structure
 
 ```
-include/      header công khai
-src/common/   mã dùng chung (giao thức, tiện ích)
+include/      public header
+src/common/   shared code (protocols, utilities)
 src/server/   server
 src/client/   client
-docs/         tài liệu (PROTOCOL.md)
+docs/         documentation (PROTOCOL.md)
 ```
 
-## Tài liệu
+## Documentation
 
-- [docs/PROTOCOL.md](docs/PROTOCOL.md): định dạng message và cách đóng khung
-- [PROGRESS.md](PROGRESS.md): tiến độ và các quyết định thiết kế
-- [AGENTS.md](AGENTS.md): quy tắc làm việc với trợ lý AI
+- [docs/PROTOCOL.md](docs/PROTOCOL.md): message format and framing
+- [PROGRESS.md](PROGRESS.md): development progress and design decisions
+- [AGENTS.md](AGENTS.md): guidelines for working with AI assistants
 
-## Trạng thái
+## Status
 
-M0: khung dự án. Xem [PROGRESS.md](PROGRESS.md).
+M0: Project scaffolding. See [PROGRESS.md](PROGRESS.md).

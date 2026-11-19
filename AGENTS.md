@@ -3,9 +3,11 @@
 These rules apply to work performed in this repository. Claude Project Instructions may add learning and interaction guidance; if the two documents appear to conflict, point out the conflict and ask rather than silently ignoring either one.
 
 ## Project Context
+
 LIL_CHAT is a learning-oriented C11 project for a terminal-based chat application using a client-server architecture and TCP.
 
 Long-term goals:
+
 - Multiple clients connect to one server concurrently.
 - Messages are framed explicitly and delivered completely at the application-protocol level.
 - Clients communicate with the server over a LAN.
@@ -15,6 +17,7 @@ Long-term goals:
 This is the user's first personal C project. Learning and understanding the implementation are as important as delivering the application.
 
 ## Environment and Build
+
 - Target environment: Linux / WSL2.
 - Toolchain: GCC, Make, C11, POSIX sockets.
 - Do not introduce Windows-specific APIs unless the user explicitly changes the platform direction.
@@ -26,18 +29,23 @@ This is the user's first personal C project. Learning and understanding the impl
 Important current-state note: the starter `.c` files in the supplied project snapshot are empty. Running `make` in that snapshot fails at server linking with `undefined reference to main` (and emits empty-translation-unit warnings). Do not claim the initial build passes. Resolve this bootstrap issue as an explicit task before treating M0's build criterion as satisfied; do not silently modify the Makefile or add placeholder implementations without approval.
 
 ## Document Map and Sources of Truth
+
 Read relevant documents before substantial work:
+
 - `CLAUDE_PROJECT_INSTRUCTIONS.md`: learning workflow and assistant interaction policy.
 - `PROGRESS.md`: current milestone, next work, decisions, and open issues.
 - `docs/PROTOCOL.md`: authoritative source for agreed wire-protocol decisions.
 - `docs/PROJECT_OVERVIEW.md`: project purpose, scope, and learning outcomes.
 - `docs/ARCHITECTURE.md`: intended module responsibilities and known uncertainties.
+- `docs/LEARNING_PLAN.md`: roadmap for the entire project.
 - `README.md`: human-facing build/run instructions.
 
 The implementation is authoritative for current behavior. `docs/PROTOCOL.md` is authoritative for agreed protocol design. If code and documentation disagree, report the mismatch and ask before changing a protocol or architecture decision. Missing or unresolved documentation is not permission to guess.
 
 ## Development Workflow
+
 For each substantial feature:
+
 1. Explain its role in the whole application.
 2. Identify prerequisites and dependencies.
 3. Describe the proposed design and data flow, including meaningful alternatives and trade-offs.
@@ -49,6 +57,7 @@ For each substantial feature:
 Do not implement multiple milestones at once without approval. Do not jump to advanced networking or concurrency before prerequisites are understood.
 
 ## Change Control
+
 - Do not modify files unless explicitly asked to implement or given approval.
 - Before substantial edits, list intended files and reasons.
 - Keep changes focused; preserve unrelated work and existing conventions.
@@ -58,6 +67,7 @@ Do not implement multiple milestones at once without approval. Do not jump to ad
 - Inspect `git status` and diffs before editing; never overwrite uncommitted work.
 
 ## C Standards and Conventions
+
 - Use C11 with `_POSIX_C_SOURCE=200809L` as configured by the Makefile, where practical.
 - Naming: `snake_case` for functions and variables; `UPPER_CASE` for macros/constants; `lil_` prefix for public functions declared in headers.
 - Every header must be self-contained and use include guards.
@@ -72,6 +82,7 @@ Do not implement multiple milestones at once without approval. Do not jump to ad
 - Do not add dependencies or abstractions without a concrete need and an explanation.
 
 ## Verification
+
 - Compile without warnings under the configured warning flags.
 - Explain how to test each feature.
 - Include normal, boundary, malformed-input, and failure/disconnection cases where relevant.
@@ -80,6 +91,7 @@ Do not implement multiple milestones at once without approval. Do not jump to ad
 - Compilation alone does not prove runtime correctness or milestone completion.
 
 ## Git and Documentation
+
 - Prefer small, focused commits.
 - Commit message format: `module: what changed` (for example, `common: add util_read_line`).
 - Work on a feature branch and merge to `main` only when the user requests or approves it.
@@ -88,5 +100,6 @@ Do not implement multiple milestones at once without approval. Do not jump to ad
 - Keep docs consistent with the actual implementation.
 
 ## Language
+
 - Discuss in Vietnamese by default.
 - Keep identifiers and standard technical terminology in English. Comments may be Vietnamese or English, consistently within a file.
